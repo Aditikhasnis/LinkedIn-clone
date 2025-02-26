@@ -1,0 +1,56 @@
+.logo {
+    display: flex;
+    align-items: center;  /* Ensures text and image align properly */
+    font-size: 2rem; /* Adjust text size */
+    justify-content: center;
+    margin-top: 10rem;
+    
+}
+
+.logo-img {
+    height: 30px;  /* Adjust as needed */
+    margin-left: 5px;  /* Space between text and image */
+}
+
+.welcome{
+    color: rgb(36, 36, 255);
+    font-size: larger;
+}
+.MuiPaper-root MuiCard-root Card MuiPaper-elevation1 MuiPaper-rounded{
+    justify-content: center;
+}
+.Card{
+    width: 35rem;
+    height: 35rem;
+
+}
+.main{
+    display: grid;
+    justify-content: center;
+}
+
+.btn_gugu{
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 20rem;
+    align-items: center;
+   
+}
+.gugu_img{
+    margin-right: 20px;
+
+}
+.btn_sign{
+    border : 1px solid blue;
+    border-radius: 10rem;
+    background-color: rgb(30, 84, 159);
+    color: white;
+    width: 10rem;
+    height: 3rem;
+    margin-left: 45px;
+    margin-top:40px;
+}
+.forgot{
+    color:blue;
+    margin-top: 11px;
+}
