@@ -1,6 +1,12 @@
+//Created by Aditi Anand
 package com.linkedin.linkedin.repository;
 
 import com.linkedin.linkedin.model.AuthenticateUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AuthenticationUserRepository extends JpaRepository<AuthenticateUser,Long> { }
+import java.util.Optional;
+
+public interface AuthenticationUserRepository extends JpaRepository<AuthenticateUser,Long> {
+
+    Optional<AuthenticateUser> findByEmail(String email);
+}

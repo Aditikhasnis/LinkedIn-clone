@@ -2,15 +2,33 @@
 package com.linkedin.linkedin.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.linkedin.linkedin.dto.AuthenticationResponseBody;
+import com.linkedin.linkedin.model.AuthenticateUser;
+import com.linkedin.linkedin.service.AuthenticationService;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/")
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/v1/authentication")
 public class authController {
+    private final AuthenticationService authService;
 
-    @GetMapping("/")
-    public String start()
-    {
-        return "Hello world";
+    public authController(AuthenticationService authService) {
+        this.authService = authService;
     }
+
+    @GetMapping("/users/email")
+    public Optional<AuthenticateUser> getUser()
+    {
+        return authService.getUser("email@email.com");
+    }
+
+    @PostMapping("/register")
+    public AuthenticationResponseBody responseBody(@Valid @RequestBody AuthenticationResponseBody registerRequestBody)
+    {
+        return authService.register(registerRequestBody);
+    }
+
 }
