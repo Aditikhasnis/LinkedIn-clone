@@ -1,6 +1,7 @@
 package com.linkedin.linkedin.service;
 
 import com.linkedin.linkedin.dto.AuthenticationResponseBody;
+import com.linkedin.linkedin.dto.RegisterRequest;
 import com.linkedin.linkedin.exception.EmailAlreadyExistsException;
 import com.linkedin.linkedin.model.AuthenticateUser;
 import com.linkedin.linkedin.repository.AuthenticationUserRepository;
@@ -23,13 +24,13 @@ public class AuthenticationService {
 
     public Optional<AuthenticateUser> getUser(String email) throws IllegalArgumentException
     {
-        return repo.findByEmail(email);
+        return AuthenticationUserRepository.findByEmail(email);
     }
     
-    public AuthenticationResponseBody register(AuthenticationResponseBody registerRequestBody) {
+    public AuthenticationResponseBody register(RegisterRequest registerRequestBody) {
         // Check if user already exists
-        Optional<AuthenticateUser> existingUser = repo.findByEmail(registerRequestBody.getEmail());
-        if (existingUser.isPresent()) {
+        Optional<AuthenticateUser> existingUser = AuthenticationUserRepository.findByEmail(registerRequestBody.getEmail());
+        if (existingUser!=null && existingUser.isPresent()) {
             throw new EmailAlreadyExistsException("User with this email already exists");
         }
         
@@ -50,9 +51,8 @@ public class AuthenticationService {
         
         // Return the response with user details and token
         return new AuthenticationResponseBody(
-            savedUser.getEmail(),
-            savedUser.getId(),
-            token
+            token,
+            "User registered successfully"
         );
     }
 }

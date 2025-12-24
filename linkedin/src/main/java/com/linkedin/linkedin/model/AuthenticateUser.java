@@ -27,4 +27,7 @@ public class AuthenticateUser {
     }
     public AuthenticateUser(){};
 
+    public String getPassword() {
+        return pwd;
+    }
 }
